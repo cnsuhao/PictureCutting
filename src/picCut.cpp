@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <QPixmap>
 #include <QImage>
+#include <QPushButton>
 
 #include <QDebug>
 
@@ -155,6 +156,8 @@ void Widget::draw_cut_line(int a)
 void Widget::on_btn_run_clicked()
 {
     if(picFiles.isEmpty()){return;} //没有加载图片
+    //使开始按钮不可用
+    ui->btn_run->setEnabled(false);
 
     if(ui->tabW_cut_conf->currentIndex()==0){
         //按比例裁切
@@ -195,7 +198,7 @@ void Widget::on_btn_run_clicked()
             image.copy(rect).save(OutputPath+fileName+'.'+PicFmt,
                                   PicFmt.toStdString().c_str(),quality);
             //qDebug()<<OutputPath+fileName+'.'+PicFmt;
-        }
+        }//end for
     }
     else{
         //横纵向等分裁切为多个图片
@@ -233,11 +236,12 @@ void Widget::on_btn_run_clicked()
                     //qDebug()<<OutputPath+fileName+(QString().setNum(index))+'.'+PicFmt;
                    image.copy(x,y,w,h).save(OutputPath+fileName+(QString().setNum(index))+'.'+PicFmt,
                                             PicFmt.toStdString().c_str(),quality);
-                }
-            }
-        }
-
-    }
+                }//end for y
+            }//end for x
+        }//end for i
+    }//end if
+    //使开始按钮可用
+    ui->btn_run->setEnabled(true);
 }
 
 /*==============================================================*
