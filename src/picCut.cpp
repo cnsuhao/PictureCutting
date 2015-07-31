@@ -9,6 +9,8 @@
 #include <QImage>
 #include <QPushButton>
 
+#include <QProgressDialog>
+
 #include <QDebug>
 
 Widget::Widget(QWidget *parent) :
@@ -158,6 +160,14 @@ void Widget::on_btn_run_clicked()
     if(picFiles.isEmpty()){return;} //没有加载图片
     //使开始按钮不可用
     ui->btn_run->setEnabled(false);
+    int picCount = picFiles.count();
+    //创建进度指示对话框
+    QProgressDialog process;
+	process.setWindowTitle("处理进度");
+    process.setLabelText(tr("裁切处理中..."));
+    process.setRange(0,picCount);
+    process.setCancelButtonText(tr("取消"));
+    process.showNormal();   //显示进度指示对话框
 
     if(ui->tabW_cut_conf->currentIndex()==0){
         //按比例裁切
@@ -178,7 +188,7 @@ void Widget::on_btn_run_clicked()
             dir.mkpath(OutputPath); //输出目录不存在的时候创建
         }
 
-        for(int i = 0;i<picFiles.count();++i){
+        for(int i = 0;i<picCount;++i){
             fileName = picFiles[i];
             QImage image(fileName); //加载要裁切的图片
             QRect rect = image.rect(); //获取大小
@@ -198,6 +208,12 @@ void Widget::on_btn_run_clicked()
             image.copy(rect).save(OutputPath+fileName+'.'+PicFmt,
                                   PicFmt.toStdString().c_str(),quality);
             //qDebug()<<OutputPath+fileName+'.'+PicFmt;
+            //更新进度条
+            process.setValue(i);
+            if(process.wasCanceled()){
+                //按下取消键
+                break;
+            }
         }//end for
     }
     else{
@@ -216,7 +232,7 @@ void Widget::on_btn_run_clicked()
             dir.mkpath(OutputPath);
         }
 
-        for(int i = 0;i<picFiles.count();++i){
+        for(int i = 0;i<picCount;++i){
             fileName = picFiles[i];
             QImage image(fileName);
             QRect rect = image.rect();
@@ -238,6 +254,12 @@ void Widget::on_btn_run_clicked()
                                             PicFmt.toStdString().c_str(),quality);
                 }//end for y
             }//end for x
+            //更新进度条
+            process.setValue(i);
+            if(process.wasCanceled()){
+                //按下取消键
+                break;
+            }
         }//end for i
     }//end if
     //使开始按钮可用

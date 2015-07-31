@@ -8,7 +8,7 @@ QT       += core gui widgets
 
 CONFIG += c++11
 
-#DEFINES += QT_NO_DEBUG_OUTPUT
+DEFINES += QT_NO_DEBUG_OUTPUT
 
 
 DESTDIR = ../build
