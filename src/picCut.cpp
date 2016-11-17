@@ -10,6 +10,7 @@
 #include <QPushButton>
 
 #include <QProgressDialog>
+#include <QCoreApplication>
 
 #include <QDebug>
 
@@ -210,6 +211,9 @@ void Widget::on_btn_run_clicked()
             //qDebug()<<OutputPath+fileName+'.'+PicFmt;
             //更新进度条
             process.setValue(i);
+            // 处理其他事件
+            QApplication::processEvents();
+            // 上面需要确保本槽函数不会被再次出发，否则可能不断递归
             if(process.wasCanceled()){
                 //按下取消键
                 break;
@@ -256,6 +260,9 @@ void Widget::on_btn_run_clicked()
             }//end for x
             //更新进度条
             process.setValue(i);
+            // 处理其他事件
+            QApplication::processEvents();
+            // 上面需要确保本槽函数不会被再次出发，否则可能不断递归
             if(process.wasCanceled()){
                 //按下取消键
                 break;
