@@ -8,6 +8,7 @@
 #include <QPixmap>
 #include <QImage>
 #include <QPushButton>
+#include <QHeaderView>
 
 #include <QProgressDialog>
 #include <QCoreApplication>
@@ -30,11 +31,12 @@ Widget::Widget(QWidget *parent) :
     ui->pic_list->setModel(model);
     //设置表头左对齐
     ui->pic_list->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-    //设置首列列宽不可变
-    ui->pic_list->horizontalHeader()->setSectionResizeMode(0,QHeaderView::Custom);
-    //设置各列列宽
-    ui->pic_list->setColumnWidth(0,ui->pic_list->width()-128);
-    ui->pic_list->setColumnWidth(1,128);
+
+    //设置充满表宽度(现有列占据整个表格)
+    ui->pic_list->horizontalHeader()->setStretchLastSection(true);
+    // 均分列宽
+    ui->pic_list->horizontalHeader()->setSectionResizeMode(0,QHeaderView::Stretch);
+
     //单选模式
     ui->pic_list->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
     //行选择模式
@@ -141,8 +143,6 @@ void Widget::draw_cut_line(int a)
     right	= ui->spinBox_right->value();
     up		= ui->spinBox_up->value();
     low		= ui->spinBox_low->value();
-
-
 
     if(left + right > 95){
         ui->spinBox_left->setValue(left-1);
