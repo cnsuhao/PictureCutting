@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>888</width>
-    <height>501</height>
+    <height>552</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,9 +15,9 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,1">
+    <layout class="QHBoxLayout" name="horizontalLayout_top" stretch="3,2">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_piclist">
        <item>
         <widget class="QLabel" name="label_pic_list">
          <property name="text">
@@ -63,7 +63,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,1">
+      <layout class="QVBoxLayout" name="verticalLayout_view" stretch="0,3,2">
        <item>
         <widget class="QLabel" name="label_view_title">
          <property name="text">
@@ -73,8 +73,20 @@
        </item>
        <item>
         <widget class="QLabel" name="label_view">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+         <property name="margin">
+          <number>0</number>
          </property>
         </widget>
        </item>
@@ -87,7 +99,7 @@
           <attribute name="title">
            <string>按比例裁切</string>
           </attribute>
-          <widget class="QWidget" name="">
+          <widget class="QWidget" name="layoutWidget">
            <property name="geometry">
             <rect>
              <x>1</x>
@@ -111,7 +123,7 @@
              </spacer>
             </item>
             <item row="0" column="2">
-             <widget class="QLabel" name="label_3">
+             <widget class="QLabel" name="label_top">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -161,7 +173,7 @@
              </spacer>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="label">
+             <widget class="QLabel" name="label_left">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -205,7 +217,7 @@
              </widget>
             </item>
             <item row="1" column="6">
-             <widget class="QLabel" name="label_2">
+             <widget class="QLabel" name="label_right">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -233,7 +245,7 @@
              </spacer>
             </item>
             <item row="2" column="2">
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="label_bottom">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -300,7 +312,7 @@
            </property>
            <layout class="QGridLayout" name="gridLayout_2">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="label_horizontal_cut">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -322,7 +334,7 @@
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="label_6">
+             <widget class="QLabel" name="label_vertical_cut">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -353,7 +365,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <layout class="QHBoxLayout" name="horizontalLayout_bottom">
      <item>
       <widget class="QGroupBox" name="gp_format_conf">
        <property name="font">
@@ -366,7 +378,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_7">
+         <widget class="QLabel" name="label_out_fmt">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -381,7 +393,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLabel" name="label_8">
+         <widget class="QLabel" name="label_out_quality">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -489,7 +501,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout" name="verticalLayout_pbtn">
        <item>
         <widget class="QPushButton" name="btn_run">
          <property name="text">
@@ -509,16 +521,6 @@
     </layout>
    </item>
   </layout>
-  <zorder>gp_format_conf</zorder>
-  <zorder>gp_save_conf</zorder>
-  <zorder>btn_run</zorder>
-  <zorder>tabW_cut_conf</zorder>
-  <zorder>btn_close</zorder>
-  <zorder>pic_list</zorder>
-  <zorder></zorder>
-  <zorder>label_pic_list</zorder>
-  <zorder>label_view</zorder>
-  <zorder>label_view_title</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
