@@ -4,8 +4,10 @@
 #include <QWidget>
 #include <QString>
 #include <QStringList>
+#include <QImage>
 
 class QStandardItemModel;
+class QImage;
 
 namespace Ui {
 class Widget;
@@ -37,6 +39,7 @@ private slots:
 private:
     Ui::Widget *ui;
     QStandardItemModel  *model;
+    QImage      preview;
     QString     path;
     QStringList picFiles;
 };
